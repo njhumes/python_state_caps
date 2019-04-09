@@ -164,6 +164,7 @@ def game():
     def play():
         random.shuffle(states)
         # sorted(states, states['wrong'])
+        # Maybe put this sorted in the for loop?
         score = 0
         for i in range(0, 5): 
             answer = input('What is the capital of ' + states[i]['name'] + '? ' )
