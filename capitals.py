@@ -157,22 +157,29 @@ states = [
 
 
 
-def game():
-    random.shuffle(states)
-    score = 0
-    for i in range(0, 5):
-        states[i]['wrong'] = 0
-        print('What is the capital of: ' + states[i]['name'])
-        answer = input()
-        if answer == states[i]['capital']:
-            print('Correct')
-            score+= 1
-            print(score)
-        else:
-            print('Wrong')
-            score-= 1
-            states[i]['wrong']+= 1
-            print(score)
-            print('You have gotten ' + states[i]['name'] + ' wrong this many times: ' + str(states[i]['wrong']))
 
+def game():
+    for k in range(len(states)):
+        states[k]['wrong'] = 0
+    def play():
+        random.shuffle(states)
+        # sorted(states, states['wrong'])
+        score = 0
+        for i in range(0, 5): 
+            answer = input('What is the capital of ' + states[i]['name'] + '? ' )
+            if answer == states[i]['capital']:
+                print('Correct')
+                score += 1
+                print('Your total score is ' + str(score))
+                print('You have gotten ' + states[i]['name'] + ' wrong this many times: ' + str(states[i]['wrong']))
+            else:
+                print('Wrong')
+                score -= 1
+                states[i]['wrong'] += 1
+                print('Your total score is ' + str(score))
+                print('You have gotten ' + states[i]['name'] + ' wrong this many times: ' + str(states[i]['wrong']))
+        again = input('Do you want to play again? ')
+        if again == 'Yes' or again == 'yes':
+            play()
+    play()       
 game()
