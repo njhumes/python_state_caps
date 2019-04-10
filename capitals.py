@@ -163,7 +163,7 @@ def game():
         states[k]['wrong'] = 0
     def play():
         random.shuffle(states)
-        # sorted(states, states['wrong'])
+        lambda: sorted(states, states['wrong'])
         # Maybe put this sorted in the for loop?
         score = 0
         for i in range(0, 5): 
